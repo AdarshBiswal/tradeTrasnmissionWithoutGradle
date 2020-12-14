@@ -69,12 +69,12 @@ public class tradeTestRunner {
     void testVersionHigh() throws Exception
     {
         Date maturityDate=sd.parse("20/05/2021");
-        Trade t1=new Trade("T2",2,"CP-2","B1",maturityDate, todaysDate, 'N');
-        tf.addTrade(t1);
+        Trade t2=new Trade("T2",2,"CP-2","B1",maturityDate, todaysDate, 'N');
+        tf.addTrade(t2);
 
         //Changing Version as 3 and Changing Counter-Party ID to CP-4
-        Trade t2=new Trade("T2",5,"CP-4","B1",maturityDate, todaysDate, 'N');
-        tf.addTrade(t2);
+        Trade t3=new Trade("T2",5,"CP-4","B1",maturityDate, todaysDate, 'N');
+        tf.addTrade(t3);
         assertEquals("CP-4",tf.allTrade.get("T2").getCounterPartId());
     }
     //Check if Version is same the list will be updated
@@ -86,8 +86,8 @@ public class tradeTestRunner {
     {
         Date maturityDate=sd.parse("20/05/2021");
         //Same Version as before and Changing Counter-Party ID to CP-2
-        Trade t1=new Trade("T1",1,"CP-2","B1",maturityDate, todaysDate, 'N');
-        tf.addTrade(t1);
+        Trade t4=new Trade("T1",1,"CP-2","B1",maturityDate, todaysDate, 'N');
+        tf.addTrade(t4);
         assertEquals("CP-2",tf.allTrade.get("T1").getCounterPartId());
     }
 
@@ -100,13 +100,13 @@ public class tradeTestRunner {
     {
         Date maturityDate=sd.parse("20/05/2021");
 
-        Trade t1=new Trade("T3",5,"CP-3","B1",maturityDate, todaysDate, 'N');
-        tf.addTrade(t1);
+        Trade t5=new Trade("T3",5,"CP-3","B1",maturityDate, todaysDate, 'N');
+        tf.addTrade(t5);
         int sizeofList=tf.allTrade.size();
         //Now Adding Another List
-        Trade t2=new Trade("T3",1,"CP-2","B1",maturityDate, todaysDate, 'N');
+        Trade t6=new Trade("T3",1,"CP-2","B1",maturityDate, todaysDate, 'N');
 
-        assertThrows(Exception.class,()->tf.addTrade(t2),"1 is less than 5");
+        assertThrows(Exception.class,()->tf.addTrade(t6),"1 is less than 5");
 
     }
     //Check if maturity Date is greater than todays date the trade is added
@@ -117,10 +117,10 @@ public class tradeTestRunner {
     {
         Date maturityDate=sd.parse("20/05/2021");
 
-        Trade t1=new Trade("T4",5,"CP-4","B3",maturityDate, todaysDate, 'N');
-        tf.addTrade(t1);
+        Trade t7=new Trade("T4",5,"CP-4","B3",maturityDate, todaysDate, 'N');
+        tf.addTrade(t7);
 
-        assertEquals(t1,tf.allTrade.get("T4"));
+        assertEquals(t7,tf.allTrade.get("T4"));
 
     }
 
@@ -128,10 +128,11 @@ public class tradeTestRunner {
     //T5  5  CP-3  B1  20/05/2020   today date  N
     @Test
     @Order(5)
-    void testMaurityLower() throws ParseException
+    void testMaurityLower() throws Exception
     {
         Date maturityDate=sd.parse("20/05/2020");
-        Trade t1=new Trade("T5",1,"CP-4","B3",maturityDate, todaysDate, 'N');
+        Trade t8=new Trade("T5",1,"CP-4","B3",maturityDate, todaysDate, 'N');
+        tf.addTrade(t8);
         assertNull(tf.allTrade.get("T5"));
     }
 
@@ -144,11 +145,11 @@ public class tradeTestRunner {
     {
 
         Date maturityDate1=sd.parse("20/05/2021");
-        Trade t1=new Trade("T6",1,"CP-2","B1",maturityDate1, todaysDate, 'N');
-        tf.addTrade(t1);
+        Trade t9=new Trade("T6",1,"CP-2","B1",maturityDate1, todaysDate, 'N');
+        tf.addTrade(t9);
         Date maturityDate=sd.parse("20/05/2021");
-        Trade t2=new Trade("T6",1,"CP-2","B1",maturityDate, todaysDate, 'N');
-        tf.addTrade(t2);
+        Trade t10=new Trade("T6",1,"CP-2","B1",maturityDate, todaysDate, 'N');
+        tf.addTrade(t10);
         assertEquals(maturityDate1,tf.allTrade.get("T6").getMaturityDate());
     }
 
@@ -160,8 +161,8 @@ public class tradeTestRunner {
     void testSameMaturity() throws Exception
     {
         Date todaysDate=Calendar.getInstance ().getTime ();
-        Trade t1=new Trade("T7",7,"CP-5","B4",todaysDate, todaysDate, 'N');
-        tf.addTrade(t1);
+        Trade t11=new Trade("T7",7,"CP-5","B4",todaysDate, todaysDate, 'N');
+        tf.addTrade(t11);
         assertNotNull(tf.allTrade.get("T7"));
     }
 
@@ -175,11 +176,11 @@ public class tradeTestRunner {
 
         Date maturityDate=sd.parse("20/05/2021");
 
-        Trade t1=new Trade("T8",1,"CP-3","B1",maturityDate, todaysDate, 'N');
-        tf.addTrade(t1);
+        Trade t12=new Trade("T8",1,"CP-3","B1",maturityDate, todaysDate, 'N');
+        tf.addTrade(t12);
         maturityDate=sd.parse("20/05/2020");
         //Now Adding Another List
-        Trade t2=new Trade("T8",5,"CP-2","B1",maturityDate, todaysDate, 'N');
+        Trade t13=new Trade("T8",5,"CP-2","B1",maturityDate, todaysDate, 'N');
         assertEquals(1,tf.allTrade.get("T8").getVersion());
 
     }
@@ -193,13 +194,13 @@ public class tradeTestRunner {
     {
         Date maturityDate=sd.parse("20/05/2021");
 
-        Trade t1=new Trade("T9",5,"CP-3","B1",maturityDate, todaysDate, 'N');
-        tf.addTrade(t1);
+        Trade t14=new Trade("T9",5,"CP-3","B1",maturityDate, todaysDate, 'N');
+        tf.addTrade(t14);
 
         maturityDate=sd.parse("20/05/2020");
         //Now Adding Another List
-        Trade t2=new Trade("T9",1,"CP-2","B1",maturityDate, todaysDate, 'N');
-        assertThrows(Exception.class,()->tf.addTrade(t2),"1 is less than 5");
+        Trade t15=new Trade("T9",1,"CP-2","B1",maturityDate, todaysDate, 'N');
+        assertThrows(Exception.class,()->tf.addTrade(t15),"1 is less than 5");
 
     }
 
@@ -209,10 +210,72 @@ public class tradeTestRunner {
     void testExpiry() throws ParseException
     {
         Date maturityDate=sd.parse("20/05/2020");
-        Trade t1=new Trade("T10",6,"CP-4","B1",maturityDate, todaysDate, 'N');
-        tf.allTrade.put("T10",t1); // hardcoded as it need to be tested and the conditio is false
+        Trade t16=new Trade("T10",6,"CP-4","B1",maturityDate, todaysDate, 'N');
+        tf.allTrade.put("T10",t16); // hardcoded as it need to be tested and the conditio is false
         tf.checkExpiredDates();
         assertEquals('Y',tf.allTrade.get("T10").getExpired());
+    }
+    
+    //Empty the HashMap to add / update given testcase from the table
+    void removeAllTrade()
+    {
+    	tf.allTrade.clear();
+    }
+    
+    //Check the testcase for T1	1	CP-1	B1	20/05/2020	<today date>	N
+    //Adding the trade will fail so Checking the size of the map to be empty
+    @Test
+    @Order(11)
+    void test1() throws Exception
+    {
+    	Date maturityDate=sd.parse("20/05/2020");
+    	Trade t17=new Trade("T1",1,"CP-1","B1",maturityDate, todaysDate, 'N');
+    	tf.addTrade(t17);
+    	assertEquals(0, tf.allTrade.size());
+    }
+    
+    //Check the testcase for T2	2	CP-2	B1	20/05/2021	<today date>	N
+    //Adding the trade will be added in the trade map
+    @Test
+    @Order(11)
+    void test2() throws Exception
+    {
+    	Date maturityDate=sd.parse("20/05/2021");
+    	Trade t18=new Trade("T2",2,"CP-2","B1",maturityDate, todaysDate, 'N');
+    	tf.addTrade(t18);
+    	assertEquals(1, tf.allTrade.size());
+    }
+    //Check the testcase for T2	1	CP-1	B1	20/05/2021	14/03/2015	N
+    //Adding the trade will not be added to the trade list
+    @Test
+    @Order(11)
+    void test3() throws Exception
+    {
+    	Date maturityDate=sd.parse("20/05/2021");
+    	Trade t18=new Trade("T2",2,"CP-2","B1",maturityDate, todaysDate, 'N');
+    	tf.addTrade(t18);
+    	assertEquals(1, tf.allTrade.size());
+    	maturityDate=sd.parse("20/05/2021");
+    	Date createdDate=sd.parse("14/03/2015");
+    	Trade t19=new Trade("T2",1,"CP-2","B1",maturityDate, createdDate, 'N');
+//    	System.out.println("Hellp");
+    	 assertThrows(Exception.class,()->tf.addTrade(t19));
+    }
+    @Test
+    @Order(12)
+    void test4() throws Exception
+    {
+    	Date maturityDate=sd.parse("20/05/2020");
+        Trade t17=new Trade("T1",1,"CP-1","B1",maturityDate, todaysDate, 'N');
+        maturityDate=sd.parse("20/05/2021");
+        Trade t18=new Trade("T2",2,"CP-2","B1",maturityDate, todaysDate, 'N');
+    
+        maturityDate=sd.parse("20/05/2020");
+        Trade t20=new Trade("T3",3,"CP-3","B2",maturityDate, todaysDate, 'N');
+        tf.allTrade.put("T3", t20);
+        
+        tf.checkExpiredDates();
+        assertEquals('Y',tf.allTrade.get("T3").getExpired());
     }
 
 
